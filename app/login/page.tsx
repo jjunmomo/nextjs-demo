@@ -1,4 +1,4 @@
-import _LoginForm from './_LoginForm';
+import LoginForm from './loginForm';
 import styles from './login.module.css';
 import Link from "next/link";
 
@@ -7,8 +7,7 @@ const LoginPage = () => {
         <div className={styles.container}>
             <header className={styles.header}>
             </header>
-
-            <_LoginForm/>
+            <LoginForm/>
             <Link href="../test2/homepage">homepage</Link>
             <Link href="../test2/inquirypage">inquirypage</Link>
             <Link href="../test2/noticepage">noticepage</Link>
