@@ -17,8 +17,8 @@ const Fetch: ({url, method, body, headers, onSuccess, onError}: {
     body: any;
     headers?: any;
     onSuccess: any;
-    onError: any
-}) => { fetchData: () => Promise<void>; loading: boolean; error: string | null } = ({ url, method = 'POST', body, headers = {}, onSuccess, onError }) => {
+    onError: any }) => { fetchData: () => Promise<void>; loading: boolean; error: string | null } =
+    ({ url, method = 'POST', body, headers = {}, onSuccess, onError }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -47,7 +47,7 @@ const Fetch: ({url, method, body, headers, onSuccess, onError}: {
         } finally {
             setLoading(false);
         }
-    }, [url, method, body, headers, onSuccess, onError]);
+    }, [url, method, headers, body, onSuccess, onError, error]);
 
     return { loading, error, fetchData };
 };

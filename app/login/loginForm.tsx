@@ -5,14 +5,20 @@ import FetchComponent from '@/utils/fetch';
 import styles from './login.module.css';
 
 const LoginForm = () => {
-    const [memberEmail, setEmail] = useState('');
-    const [memberPassword, setPassword] = useState('');
+    const [appMemberEmail, setEmail] = useState('');
+    const [appMemberPassword, setPassword] = useState('');
+    const [appCode, setAppCode] = useState('kr.mbaas.app.managerjm');
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const handleSuccess = useCallback((data:any) => {
-        console.log('로그인 성공:', data);
-        setLoginSuccess(true);
+        if(data.result ==="FAIL") {
+            console.log('로그인 실패:', data);
+        }else {
+            console.log('로그인 성공:', data);
+            setLoginSuccess(true);
+        }
+
     }, []);
 
     const handleError = useCallback((error : any) => {
@@ -21,9 +27,9 @@ const LoginForm = () => {
     }, []);
 
     const {loading, fetchData} = FetchComponent({
-        url: 'https://api.aiapp.link/member/p_login',
+        url: 'https://devapi.aiapp.link/api/app/member/login',
         method: 'POST',
-        body: {memberEmail, memberPassword},
+        body: {appMemberEmail, appMemberPassword,appCode},
         onSuccess: handleSuccess,
         onError: handleError,
     });
@@ -39,7 +45,7 @@ const LoginForm = () => {
                 <input
                     type="email"
                     placeholder="이메일을 입력해주세요."
-                    value={memberEmail}
+                    value={appMemberEmail}
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
@@ -48,7 +54,7 @@ const LoginForm = () => {
                 <input
                     type="password"
                     placeholder="비밀번호를 입력해주세요."
-                    value={memberPassword}
+                    value={appMemberPassword}
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
