@@ -1,4 +1,5 @@
-import styles from './style.css';
+// @ts-ignore
+import styles from './homepage.style.css';
 
 const Home = () => {
     return (

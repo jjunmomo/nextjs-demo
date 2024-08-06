@@ -1,4 +1,5 @@
-import styles from './style.css';
+// @ts-ignore
+import styles from '@/app/test2/inquirypage/inquiry.style.css';
 
 const Home = () => {
     return (

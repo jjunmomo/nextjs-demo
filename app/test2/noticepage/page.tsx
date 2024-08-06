@@ -1,4 +1,5 @@
-import styles from './style.css';
+// @ts-ignore
+import styles from '@/app/test2/noticepage/notice.style.css';
 import Link from "next/link";
 
 const Home = () => {

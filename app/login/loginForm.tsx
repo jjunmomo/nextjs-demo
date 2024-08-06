@@ -10,12 +10,12 @@ const LoginForm = () => {
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const handleSuccess = useCallback((data) => {
+    const handleSuccess = useCallback((data:any) => {
         console.log('로그인 성공:', data);
         setLoginSuccess(true);
     }, []);
 
-    const handleError = useCallback((error) => {
+    const handleError = useCallback((error : any) => {
         console.error('로그인 실패:', error);
         setError('로그인에 실패했습니다. 다시 시도해주세요.');
     }, []);
@@ -53,7 +53,7 @@ const LoginForm = () => {
                 />
             </div>
             {error && <div className={styles.error}>{error}</div>}
-            <div className={styles.loginButton} onClick={fetchData} disabled={loading}>
+            <div className={styles.loginButton} onClick={fetchData} aria-disabled={loading}>
                 {loading ? '로그인중...' : '로그인'}
             </div>
             <div className={styles.links}>

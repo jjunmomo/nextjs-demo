@@ -11,7 +11,14 @@ interface FetchComponentProps {
     onError: (error: any) => void;
 }
 
-const Fetch: React.FC<FetchComponentProps> = ({ url, method = 'POST', body, headers = {}, onSuccess, onError }) => {
+const Fetch: ({url, method, body, headers, onSuccess, onError}: {
+    url: any;
+    method?: any;
+    body: any;
+    headers?: any;
+    onSuccess: any;
+    onError: any
+}) => { fetchData: () => Promise<void>; loading: boolean; error: string | null } = ({ url, method = 'POST', body, headers = {}, onSuccess, onError }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -34,8 +41,8 @@ const Fetch: React.FC<FetchComponentProps> = ({ url, method = 'POST', body, head
 
             const data = await response.json();
             onSuccess(data);
-        } catch (error) {
-            setError(error.message);
+        } catch (Error) {
+            setError(null);
             onError(error);
         } finally {
             setLoading(false);
